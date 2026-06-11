@@ -20,6 +20,7 @@ async def websocket_endpoint(websocket: WebSocket):
             dados_recebidos = await websocket.receive_text()
             dados_json = json.loads(dados_recebidos)
             
+            # Corrigido: Declaramos o global ANTES de mexer na variável
             global ultima_mensagem_salva
             ultima_mensagem_salva = {
                 "usuario": str(dados_json.get("usuario", "Anônimo")),
